@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>html5 template</title>
+    <!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <!-- <script src="js/jquery-2.1.1.min.js"></script> -->
+    <style type="text/css">
+      .error {
+        color:red;
+      }
+      .hidden {
+        display:none;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function() {
+        document.getElementById("contact-form").onsubmit = validateForm;    
+      }
+      function validateForm() {
+
+      }
+      validateTextFeield(){
+        var fname = document.getElementById("first-name").value;
+        var errorSpan = document.getElementById("error-first-name");
+
+        if(fname === "") {
+          //show error and stay
+          errorSpan.className = "error";
+          return false; 
+        } else {
+          //hide error and succeed 
+          errorSpan.className = "hidden"';
+          return true;
+        }
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+  </head>
+  <body>
+
+    <form id="contact-form" action="success.html">
+      <p>
+        <label for="first-name">First Name:</label>
+        <input type="text" name="first-name" id="first-name">
+        <span id="error-first-name" class="error hidden">* Blank</span>
+
+      </p>
+      <p>
+        <label for="last-name">Last Name:</label>
+        <input type="text" name="last-name" id="last-name">
+        <span id="error-last-name" class="error hidden">* Blank</span>
+      </p>
+      <p>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone">
+        <span id="error-phone" class="error hidden">* Blank</span>
+      </p>
+      <p>
+        <label for="terms">
+          <input type="checkbox" id="terms" name="terms">I Agree
+        </label>
+        <span id="error-terms" class="error hidden">* Blank</span>
+      <p>
+
+
+        <button type="submit" name="submit">Submit</button>
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>html5 template</title>
+    <!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <!-- <script src="js/jquery-2.1.1.min.js"></script> -->
+    <style type="text/css">
+      .error {
+        color:red;
+      }
+      .hidden {
+        display:none;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("ice-cream-form").onsubmit = 
+          validateiceCream;
+      }
+      function validateiceCream(){
+        var iceCreamType = document.getElementById ("ice-cream-type").value;
+        var iCreamError = document.getElementById ("error-ice-cream");
+
+        if(iceCreamType.toLowerCase() === "vanilla") {
+          iCreamError.className = "hidden";
+          return true;
+          }else{  
+          
+          iCreamError.className = "error";
+          return false;
+          }
+        }
+
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+  </head>
+  <body>
+
+    <form id="ice-cream-form" action="success.html">
+      <p>
+        <label for="ice-cream-type">What is your favorite ice cream?</label>
+        <input name="ice-cream-type" id="ice-cream-type" type="text">
+        <span id="error-ice-cream" class="error hidden">* Error</span>
+      </p>
+      <button name="submit" type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>
