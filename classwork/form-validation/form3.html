@@ -20,22 +20,43 @@
         document.getElementById("contact-form").onsubmit = validateForm;    
       }
       function validateForm() {
-
+        var validFirstName = validateTextField("first-name", "error-first-name");
+        var validLastName = validateTextField("last-name", "error-last-name");
+        var validPhone = validateTextField("phone", "error-phone");
+        var validTerms = validateCheckBox();
+        
+        return validFirstName && validLastName && validPhone && validTerms;
       }
-      validateTextFeield(){
-        var fname = document.getElementById("first-name").value;
-        var errorSpan = document.getElementById("error-first-name");
+      function validateTextField(fieldId, errorId){
+        var fieldText = document.getElementById(fieldId).value;
+        var errorSpan = document.getElementById(errorId);
 
-        if(fname === "") {
+        if(fieldText === "") {
           //show error and stay
           errorSpan.className = "error";
           return false; 
         } else {
           //hide error and succeed 
-          errorSpan.className = "hidden"';
+          errorSpan.className = "hidden";
           return true;
         }
       }
+      
+       function validateCheckBox(){
+        var checkBox = document.getElementById().value;
+        var errorSpan = document.getElementById("error-terms");
+
+        if(!checkBox.checked) {
+          //show error and stay
+          errorSpan.className = "error";
+          return false; 
+        } else {
+          //hide error and succeed 
+          errorSpan.className = "hidden";
+          return true;
+        }
+      }
+      
     </script>
     <meta name="viewport" content="width=device-width, user-scalable=no">
   </head>
@@ -45,24 +66,24 @@
       <p>
         <label for="first-name">First Name:</label>
         <input type="text" name="first-name" id="first-name">
-        <span id="error-first-name" class="error hidden">* Blank</span>
+        <span id="error-first-name" class="hidden">* Blank</span>
 
       </p>
       <p>
         <label for="last-name">Last Name:</label>
         <input type="text" name="last-name" id="last-name">
-        <span id="error-last-name" class="error hidden">* Blank</span>
+        <span id="error-last-name" class="hidden">* Blank</span>
       </p>
       <p>
         <label for="phone">Phone:</label>
         <input type="text" name="phone" id="phone">
-        <span id="error-phone" class="error hidden">* Blank</span>
+        <span id="error-phone" class="hidden">* Blank</span>
       </p>
       <p>
         <label for="terms">
           <input type="checkbox" id="terms" name="terms">I Agree
         </label>
-        <span id="error-terms" class="error hidden">* Blank</span>
+        <span id="error-terms" class="hidden">* Blank</span>
       <p>
 
 
