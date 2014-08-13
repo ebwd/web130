@@ -1,47 +1,104 @@
 <html>
   <head>
     <title>Contact Erica | Web130</title>
-   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet/less" href="css/styles.less">
     <script src="js/less-1.7.3.min.js"></script>
-    <script>
-      var name = prompt('What is your name?', '');
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/parsley.min.js"></script>
+    <!--
+<script>
+var name = prompt('What is your name?', '');
+</script>
+-->
   </head>
   <body>
-   <div id="header">
-     <h1><a href="index.html">WEB130</a></h1>
-     <h2>Contact Me</h2>
-         <nav id="main-menu">
-       <ul>
-         <li><a href="#">Classwork&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
+    <div id="header">
+      <h1><a href="index.html">WEB130</a></h1>
+      <h2>Contact Me</h2>
+      <nav id="main-menu">
+        <ul>
+          <li><a href="#">Classwork&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
             <ul>
               <li><a href="classwork/01-css-dropdown/index.html">Dropdown Menus</a></li>
               <li><a href="classwork/02-less/exercise-01/">LESS Part 1</a></li> 
               <li><a href="classwork/02-less/exercise-02/">LESS Part 2</a></li>
-               <li><a href="classwork/03-less-b/index.html">LESS Part 3</a></li>
-          </ul>
-         </li>
-         <li><a href="about.html">About</a></li>
-         <li><a href="contact.html">Contact</a></li>
-       </ul>
-     </nav>
+              <li><a href="classwork/03-less-b/index.html">LESS Part 3</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
     <div id="main">
-      <script>
-        document.write('<h2>Welcome ' + name + '</h2>');
-      </script>
+      <!--   <script>
+document.write('<h2>Welcome ' + name + '</h2>');
+</script>
+--> 
+      <form id="contact-form" action="success.html" data-parsley-validate>
+
+        <label for="first-name">First Name * :</label>
+        <input type="text" name="first-name" id="first-name" required />
+
+        <label for="last-name">Last Name * :</label>
+        <input type="text" name="last-name" id="last-name" required />
+
+        <label for="address">Street Address * :</label>
+        <input type="text" name="address" id="address" required />
+
+        <label for="city">City *:</label>
+        <select id="city" required>
+          <option value="">Choose..</option>
+          <option value="Seattle">Seattle</option>
+          <option value="Tacoma">Tacoma</option>
+          <option value="Everett">Everett</option>
+          <option value="other">Other..</option>
+        </select>
+
+        <label for="zip-code">Zip Code * :</label>
+        <input type="text" name="zip-code" id="zip-code" data-parsley-length="[5,5]" data-parsley-type="digits" required />
+
+        <label for="email">Email * :</label>
+        <input type="email" name="email" id="email" data-parsley-trigger="change" data-parsley-type="email" required />
+
+        <label for="email">Confirm Email * :</label>
+        <input type="email" name="email2" id="email2" data-parsley-trigger="change" data-parsley-type="email" required data-parsley-equalto="#email" />
+
+        <!-- here, field is not required, it won't throw any error if no checkbox
+is checked. But if checked, two at least must be checked -->
+        <label for="language">Language(s) Spoken:</label>
+        <p>
+          English <input type="checkbox" name="language" value="english" data-parsley-required="true" data-parsley-mincheck="2" data-parsley-error-message="English is required!" />
+          Spanish <input type="checkbox" name="language" value="spanish" />
+          Japanese <input type="checkbox" name="language" value="japanese" />
+          French <input type="checkbox" name="language" value="french" />
+        <p>
+
+          <!-- radio and checkbox inputs by default have to be wrapped in a parent
+elemnt (here <p>) that will have success and error classes -->
+          <label for="car">Do you have a car? *:</label>
+        <p>
+          Yes: <input type="radio" name="car" id="carY" value="N" required />
+          No: <input type="radio" name="car" id="carN" value="Y" />
+        </p>
+
+        <input name="submit" id="submit" type="submit" value="Submit" />
+        <input name="rest" id="reset" type="reset" value="Reset" />
+      </form>
+
     </div>
     <div id="side">
       <ul>
         <li>List!</li>
-         <li>List Thing 1</li>
-         <li>List Thing 2</li>
-         <li>List Thing 3</li>
+        <li>List Thing 1</li>
+        <li>List Thing 2</li>
+        <li>List Thing 3</li>
       </ul>
     </div>
     <div id="footer">
       <p>copyright 3 of spades 2014</p> 
     </div>
+
   </body>
 </html>
